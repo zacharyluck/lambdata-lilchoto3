@@ -1,7 +1,7 @@
 import pandas as pd
 
 def split_datetime(df, columns=None):
-    '''
+    """
     Split datetime columns in a Dataframe by month, day, and year.
 
     Specify which columns specifically to split or leave blank
@@ -19,7 +19,7 @@ def split_datetime(df, columns=None):
     -------
     DataFrame
         DataFrame with the specified dtype datetime columns split
-    '''
+    """
 
     # Check if it's a DataFrame at all
     if not isinstance(df, pd.DataFrame):
@@ -65,7 +65,7 @@ def split_datetime(df, columns=None):
     return pd.concat([df, temp], axis=1)
 
 def add_column(df, series, name):
-    '''
+    """
     Appends a list as a new column onto a given DataFrame.
 
     Parameters
@@ -84,7 +84,7 @@ def add_column(df, series, name):
     DataFrame
         DataFrame with the list added onto it as a new
         Series with column header.
-    '''
+    """
 
     # Check if it's a DataFrame at all
     if not isinstance(df, pd.DataFrame):
