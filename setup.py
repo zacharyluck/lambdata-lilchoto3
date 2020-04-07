@@ -5,7 +5,7 @@ with open('README.md', 'r') as fh:
 
 setup(
     name='lambdata-zacharyluck',
-    version='1.0.1',
+    version='1.0.2',
     author='Zachary Luck',
     author_email='zacharysluck@gmail.com',
     description='Some simple DataFrame altering functions',
