@@ -17,6 +17,7 @@ base_df = pd.DataFrame({
     'date': ['09-03-2020', '02-29-2020', '01-15-2019']
 })
 
+
 class LambdataTest(unittest.TestCase):
     '''
     Tests functionality for DataFrameTransmogrifier
@@ -30,7 +31,8 @@ class LambdataTest(unittest.TestCase):
     def test_lambdata_date_split(self):
         # test splitting datetimes
         df = base_df.copy()
-        df['date'] = pd.to_datetime(base_df['date'], infer_datetime_format=True)
+        df['date'] = pd.to_datetime(base_df['date'],
+                                    infer_datetime_format=True)
         df_t = DataFrameTransmogrifier(df)
 
         # run the function itself
@@ -60,6 +62,7 @@ class LambdataTest(unittest.TestCase):
 
         # check if i've done this right
         assert_frame_equal(df_t.df, df)
+
 
 def run_tests():
     unittest.main()
