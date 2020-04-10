@@ -18,7 +18,7 @@ class DataFrameTransmogrifier():
                 on getting the modified DataFrame out of the
                 transmogrifier.
         """
-        self.df = df
+        self.df = df.copy()
 
     def return_dataframe(self):
         """
@@ -114,7 +114,7 @@ class DataFrameTransmogrifier():
         temp = self.df.copy()
         if isinstance(series, list):
             if (self.df.shape[0] == len(series)):
-                series = pd.Series(series)
+                series = pd.Series(series, index=temp.index)
                 temp[name] = series
             else:
                 raise ValueError(
@@ -125,25 +125,3 @@ class DataFrameTransmogrifier():
 
         # Save the changes
         self.df = temp
-
-if __name__ == "__main__":
-    # Testing code functionality
-    df = pd.DataFrame({
-        'name': ['Anders', 'Charles', 'Bryce'],
-        'score': [87, 32, 58],
-        'date': ['09-03-2020', '02-29-2020', '01-15-2019']
-    })
-
-    df['date'] = pd.to_datetime(df['date'], infer_datetime_format=True)
-
-    print(f'Starting Dataframe:\n{df}\n')
-
-    # initialize the class
-    df_t = DataFrameTransmogrifier(df)
-
-    # Test the functions
-    df_t.split_datetime()
-    df_t.add_column([92, 98, 99], 'new_score')
-    df = df_t.return_dataframe()
-
-    print(f'Resulting Dataframe:\n{df}')
